@@ -24,7 +24,7 @@ namespace Lab2{
             int min = Int32.MaxValue;
             int index = 0;
 
-            for (var i = startIndex; i < endIndex; i++) 
+            for (var i = startIndex; i <= endIndex; i++) 
                 if (min > _arr[i]) {
                     min = _arr[i];
                     index = i;

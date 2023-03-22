@@ -13,7 +13,7 @@ namespace Lab2{
             var arr = new MyArrClass(dimension);
             
             watch.Start();
-            var min = arr.PartMin(0, dimension);
+            var min = arr.PartMin(0, dimension - 1);
             watch.Stop();
 
             Console.WriteLine($"min: {min} watch: {watch.ElapsedMilliseconds}");
@@ -25,7 +25,7 @@ namespace Lab2{
             watch.Stop();
             Console.WriteLine($"Parallel min: {minParallel} watch: {watch.ElapsedMilliseconds}");
 
-            Console.ReadLine();
+            // Console.ReadLine();
         }
     }
 }
