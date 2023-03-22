@@ -45,22 +45,17 @@ namespace Lab2{
         }
 
         public (int, int) ParallelMin(int threadNum) {
-            Thread[] thread;
             int minDimension = _arr.Length / threadNum;
-
-            if (_arr.Length % threadNum == 0)
-                thread = new Thread[threadNum];
-            else
-                thread = new Thread[threadNum + 1];
+            Thread[] thread = new Thread[threadNum];
             
             int i = 0, j = 0;
-            for(; j < threadNum; i+= minDimension, j++){
-                var minThread = new ThreadMin(i, i + minDimension, this);
-                thread[j] = new Thread(minThread.Run);
-            }
-
-            if (_arr.Length % threadNum != 0) {
-                var minThread = new ThreadMin(i, _arr.Length - 1, this);
+            ThreadMin minThread;
+            for(; j < threadNum; i+= minDimension, j++) {
+                if (_arr.Length % threadNum != 0 && j == threadNum - 1) 
+                    minThread = new ThreadMin(i, _arr.Length - 1, this);
+                else 
+                    minThread = new ThreadMin(i, i + minDimension, this);
+                
                 thread[j] = new Thread(minThread.Run);
             }
 
