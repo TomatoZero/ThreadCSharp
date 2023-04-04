@@ -32,7 +32,7 @@ namespace Lab2{
             
             return (min, index);
         }
-
+        
         public void SetMinValue(int value, int index) {
             lock (_monitorLock) {
                 if (_minValue > value) {
