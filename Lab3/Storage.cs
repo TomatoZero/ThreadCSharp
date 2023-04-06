@@ -20,13 +20,11 @@ namespace Lab3{
 
         public void PutItem(string item) {
             _list.Add(item);
-            Console.WriteLine($"Put: {item}");
         }
 
         public string TakeItem() {
             var item = _list[0]; 
             _list.RemoveAt(0);
-            Console.WriteLine($"Take: {item}");
             return item;
         }
 
