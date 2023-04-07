@@ -1,20 +1,26 @@
 ﻿using System;
 
-namespace Lab3{
-    public class Producer{
-        private Storage _storage;
-        private int _itemNum;
-        private int _id;
+namespace Lab3
+{
+    public class Producer
+    {
+        private readonly Storage _storage;
+        private readonly int _itemNum;
+        private readonly int _id;
 
-        public Producer(Storage storage, int itemNum, int id) {
+        public Producer(Storage storage, int itemNum, int id)
+        {
             _storage = storage;
             _itemNum = itemNum;
             _id = id;
         }
 
-        public void Run() {
-            try {
-                for (var i = 0; i < _itemNum; i++) {
+        public void Run()
+        {
+            try
+            {
+                for (var i = 0; i < _itemNum; i++)
+                {
                     Console.WriteLine($"Producer #{_id} See if the storage is full. Item #{i}");
                     _storage.FullWaitOne();
                     Console.WriteLine($"Producer #{_id} Near the storage Item #{i}");
@@ -29,11 +35,12 @@ namespace Lab3{
                     Console.WriteLine($"Producer #{_id} Left the storage Item #{i}");
                     Console.WriteLine($"Producer #{_id} EmptyRelease :  {i}");
                     _storage.EmptyRelease();
-                }    
+                }
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 throw new Exception(e.Message);
-            }    
+            }
         }
     }
 }
